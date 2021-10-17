@@ -20,8 +20,9 @@ ps:
 logs:
 	docker-compose logs core
 test:
-	docker-compose run --rm core coverage run --source="." manage.py test
-	docker-compose run --rm core coverage report -m
+	# docker-compose run --rm core coverage run --source="." manage.py test
+	# docker-compose run --rm core coverage report -m
+	docker-compose run --rm core python -m unittest
 prune:
 	make down
 	docker volume prune -f
