@@ -53,12 +53,6 @@ class TestMyApp(MyAppTestCase):
         Base.metadata.drop_all(engine)
         Base.metadata.create_all(engine)
 
-    def test_images(self):
-        doc = """{"images": [{"href": "/images/1eaf6ef1-7f2d-4ecc-a8d5-6e8adba7cc0e.png"}]}"""
-
-        result = self.simulate_get("/images")
-        self.assertEqual(result.text, doc)
-
     def test_highest_co2(self):
         data = """{"data": {"3": {"time": "2015-08-06 10:25:47", "CO2": 1362}, "4": {"time": "2015-08-06 10:35:50", "CO2": 1362}}, "count": 2}"""
         result = self.simulate_get("/highest-co2")
