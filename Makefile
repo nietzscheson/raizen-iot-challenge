@@ -31,3 +31,6 @@ format:
 	docker-compose run --rm core black .
 lint:
 	docker-compose run --rm core black . --check
+
+import:
+	docker-compose run --rm core python import.py

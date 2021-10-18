@@ -10,9 +10,9 @@ class Sensor(Base):
     __tablename__ = "sensor"
     id = Column(Integer, primary_key=True)
     time = Column(DateTime())
-    power = Column(Integer())
+    power = Column(Float(), nullable=True, default=0.0)
     temp = Column(Integer())
     humidity = Column(Integer())
     light = Column(Integer())
     CO2 = Column(Integer())
-    dust = Column(Float())
+    dust = Column(Float(), nullable=True, default=0.0)

@@ -54,16 +54,16 @@ class TestMyApp(MyAppTestCase):
         Base.metadata.create_all(engine)
 
     def test_highest_co2(self):
-        data = """{"data": {"3": {"time": "2015-08-06 10:25:47", "CO2": 1362}, "4": {"time": "2015-08-06 10:35:50", "CO2": 1362}}, "count": 2}"""
+        data = """{"data": {"highest_co2": "1362", "records": {"3": {"time": "2015-08-06 10:25:47", "CO2": 1362}, "4": {"time": "2015-08-06 10:35:50", "CO2": 1362}}, "count": 2}}"""
         result = self.simulate_get("/highest-co2")
         self.assertEqual(result.text, data)
 
     def test_hottest_temperature(self):
-        data = """{"data": {"2": {"time": "2015-08-03 17:19:37", "temperature": 34}}, "count": 1}"""
+        data = """{"data": {"month": 8, "day": 3, "temperature": 34}}"""
         result = self.simulate_get("/hottest-temperature")
         self.assertEqual(result.text, data)
 
     def test_highest_humidity(self):
-        data = """{"data": {"1": {"time": "2015-08-01 00:00:28", "humidity": 40}}, "count": 1}"""
+        data = """{"data": {"day": 1, "hour": 0, "highest_humidity": 40}}"""
         result = self.simulate_get("/highest-humidity")
         self.assertEqual(result.text, data)
