@@ -1,6 +1,7 @@
+from datetime import time
 import os
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime, Float
 
 Base = declarative_base()
 
@@ -8,4 +9,10 @@ Base = declarative_base()
 class Sensor(Base):
     __tablename__ = "sensor"
     id = Column(Integer, primary_key=True)
-    title = Column(String(50))
+    time = Column(DateTime())
+    power = Column(Integer())
+    temp = Column(Integer()) 
+    humidity = Column(Integer())
+    light = Column(Integer()) 
+    CO2 = Column(Integer())
+    dust = Column(Float())
