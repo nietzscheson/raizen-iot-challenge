@@ -18,3 +18,17 @@ class HighestCO2Resource:
 
         resp.text = json.dumps({"data": data, "count": len(query)}, ensure_ascii=False)
         resp.status = falcon.HTTP_200
+
+class HottestTemperatureResource:
+    def on_get(self, req, resp):
+        session = req.context["session"]
+    
+        subquery = session.query(func.max(Sensor.temp)).scalar_subquery()
+        query = session.query(Sensor).filter(Sensor.temp==subquery).all()
+         
+        data = {}
+        for row in query:
+            data[row.id] = {"time": str(row.time), "temperature": row.temp}
+
+        resp.text = json.dumps({"data": data, "count": len(query)}, ensure_ascii=False)
+        resp.status = falcon.HTTP_200
